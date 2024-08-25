@@ -6,8 +6,8 @@ const Banner = ({query, handleInputChange}) => {
     
     return (
         <div className='max-w-screen-2xl container mx-auto xl:px-24 px-4 md:py-20 py-14'>
-            <h1 className='text-5xl font-bold text-primary mb-3'>Find your <span className='text-RubyRed'>new job</span> today</h1>
-            <p className='text-lg text-black/70 mb-8'>Millions of jobs in the engineering, technology and computer sectors are waiting for you.</p>
+            <h1 className='text-5xl font-bold text-white mb-3'>Find your <span className='text-RubyRed'>new job</span> today</h1>
+            <p className='text-lg text-white/70 mb-8'>Millions of jobs in the engineering, technology and computer sectors are waiting for you.</p>
 
             <form>
                 <div className='flex justify-start md:flex-row flex-col md:gap-0 gap-4'>

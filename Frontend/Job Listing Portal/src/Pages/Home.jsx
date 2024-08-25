@@ -3,13 +3,14 @@ import Banner from '../components/Banner'
 import Card from '../components/Card'
 import Jobs from './Jobs'
 import Sidebar from '../sidebar/Sidebar'
+import NewsLetter from '../components/NewsLetter'
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null)
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 6;
+  const itemsPerPage = 4;
 
   useEffect(() => {
     setIsLoading(true)
@@ -73,13 +74,23 @@ const Home = () => {
 
     // category filtering
     if (selectedItem) {
-      filteredJobs = filteredJobs.filter(({ jobLocation, maxPrice, experienceLevel, salaryType, employmentType, postingDate }) => (
-        jobLocation.toLowerCase() === selectedItem.toLowerCase() ||
-        parseInt(maxPrice) <= parseInt(selectedItem) ||
-        salaryType.toLowerCase() === selectedItem.toLowerCase() ||
-        employmentType.toLowerCase() === selectedItem.toLowerCase()
-      ));
-      console.log(filteredJobs);
+      filteredJobs = filteredJobs.filter(
+        ({
+          jobLocation,
+          maxPrice,
+          experienceLevel,
+          salaryType,
+          employmentType,
+          postingDate
+        }) =>  
+          jobLocation.toLowerCase() === selectedItem.toLowerCase() ||
+          parseInt(maxPrice) <= parseInt(selectedItem) ||
+          postingDate >= selectedItem ||
+          experienceLevel.toLowerCase() === selectedItem.toLowerCase() ||
+          salaryType.toLowerCase() === selectedItem.toLowerCase() ||
+          employmentType.toLowerCase() === selectedItem.toLowerCase()
+      );
+      // console.log(filteredJobs);
     }
 
     // slice tha data based on current page
@@ -97,14 +108,14 @@ const Home = () => {
       <Banner query={query} handleInputChange={handleInputChange} />
 
       {/* main content */}
-      <div className='bg-[#FAFAFA] md:grid grid-cols-4 gap-5 lg:px-20 px-3 py-12'>
+      <div className='bg-[#111f24] md:grid grid-cols-4 gap-5 lg:px-20 px-3 py-12'>   {/* #FAFAFA */}
         {/* Left side */}
-        <div className='bg-white p-4 rounded'>
+        <div className='bg-[#325a69] p-4 rounded'>
           <Sidebar handleChange={handleChange} handleClick={handleClick} />
         </div>
 
         {/* Job cards */}
-        <div className='col-span-2 bg-white p-3 rounded-sm'>
+        <div className='col-span-2 bg-[#325a69] p-3 rounded-sm text-white'>
           {
             isLoading ? (<p className='font-medium'>Loading...</p>) : result.length > 0 ? (<Jobs result={result} />) : <>
               <h3 className='text-lg font-bold mb-2'>{result.length} Jobs</h3>
@@ -115,7 +126,7 @@ const Home = () => {
           {/* For Pagination  */}
           {
             result.length > 0 ? (
-              <div className='flex justify-center mt-4 space-x-8'>
+              <div className='flex justify-center mt-4 space-x-8 text-white'>
                 <button onClick={previousPage} disabled={currentPage === 1} className='hover:underline'>Previous</button>
                 <span className='mx-2'>{currentPage} of {Math.ceil(filteredItems.length / itemsPerPage)}</span>
                 <button onClick={nextPage} disabled={currentPage === Math.ceil(filteredItems.length / itemsPerPage)} className='hover:underline'>Next</button>
@@ -126,7 +137,7 @@ const Home = () => {
         </div>
 
         {/* Right side */}
-        <div className='bg-white p-4 rounded'>RIgh</div>
+        <div className='bg-[#325a69] p-4 rounded'><NewsLetter /></div>
       </div>
     </div>
   )
