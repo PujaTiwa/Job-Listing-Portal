@@ -8,7 +8,8 @@ export default {
     extend: {
       colors: {
         "primary": "#141414",
-        "blue": "#3575E2"
+        "crimption": "#DC143C",
+        'RubyRed': '#E0115F'
       }
     },
   },

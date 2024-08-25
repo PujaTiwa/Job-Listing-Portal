@@ -5,13 +5,14 @@ body{
 }
 
 .active{
-  color: #3575E2;
+  color: #E0115F;
+  /* color: crimson; */
   font-weight: 500;
 }
 
 a {
   text-decoration: none;
-  color: rgb(97, 97, 97);
+  /* color: rgb(97, 97, 97); */
 }
 
 li {
@@ -114,7 +115,7 @@ li {
 }
 
 .sidebar-label-container input:checked ~ .checkmark {
-  background-color: #2196f3;
+  background-color: crimson;
 }
 
 .checkmark:after {
