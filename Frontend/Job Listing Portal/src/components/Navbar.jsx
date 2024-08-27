@@ -12,7 +12,7 @@ const Navbar = () => {
     { path: "/", title: "Start a search" },
     { path: "/my-job", title: "My Jobs" },
     { path: "/salary", title: "Salary" },
-    { path: "/past-job", title: "Post a Job" },
+    { path: "/job-listing", title: "Listing a Job" },
   ]
   return (
     <header className='max-w-screen-2xl container mx-auto xl:px-24 px-4'>
